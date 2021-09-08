@@ -15,29 +15,94 @@ class Matrix:
 
 ###############################################################################
 
-    def __init__(self, rows, cols, data): # method constructor for class instance variables
+    def __init__(self, rows, cols, data): 
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be stored
+        rows : int
+            number of rows in the matrix
+        cols : int
+            number of columns in the matrix
+        data : list
+            values contained in the matrix
+            
+        Returns
+        -------
+        None
+        '''
 
         if rows * cols != len(data): raise Exception('MATRIX DATA DOES NOT MATCH DIMENSIONS') # conditional to raise exception
         self.rows,self.cols,self.data = rows,cols,data # storing class instance variables
 
 ###############################################################################
 
-    def getNumRows(self): return self.rows # class method for getting row instance variable
+    def getNumRows(self): 
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be used
+            
+        Returns
+        -------
+        None
+        '''
+        
+        return self.rows # return instance of rows variable 
 
 ###############################################################################
 
-    def getNumCols(self): return self.cols # class method for getting column instance variable
+    def getNumCols(self): 
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be used
+            
+        Returns
+        -------
+        None
+        '''
+        
+        return self.cols # return instance of columns variable 
 
 ###############################################################################
 
-    def __str__(self): # class method for printing array
+    def __str__(self): 
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be used
+            
+        Returns
+        -------
+        array : numpy array
+            a numpy matrix array
+        '''
 
-        array = np.reshape(np.array(self.data), (self.rows, self.cols)) # reshape array to fit dimensions
-        return str(array) # return string of array
+        array = str(np.reshape(np.array(self.data), (self.rows, self.cols))) # reshape array to fit dimensions
+        
+        return array # return matrix
 
 ###############################################################################
 
-    def __add__(self, other): # class method for adding two matracies
+    def __add__(self, other): 
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be used
+        other : instance variable 
+            allows for instances of an object of the same class to be used 
+            
+        Returns
+        -------
+        new_array : numpy array
+            sum of two numpy matrix arrays
+        '''
 
         if self.rows != other.rows and self.cols != other.cols: raise Exception('MATRIX DATA DOES NOT MATCH DIMENSIONS') # conditional to raise exception
         new_data = [] # initialize list for new matrix data
@@ -46,11 +111,32 @@ class Matrix:
             new_data.append(sum) # append new matrix values
 
         new_array = np.reshape(np.array(new_data), (self.rows, self.cols)) # reshape array to fit dimensions
+        
         return new_array # return sum of arrays
 
 ###############################################################################
 
-    def __eq__(self, other): # class method for finding equivalent matracies
+    def __eq__(self, other):
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be used
+        other : instance variable 
+            allows for instances of an object of the same class to be used 
+            
+        Returns
+        -------
+        If Matracies are not equivalent:
+        
+            False : boolean
+                boolean inequality value 
+                
+        If Matracies are equivalent:
+        
+            True : boolean
+                boolean equality value
+        '''
 
         if self.rows != other.rows and self.cols != other.cols: raise Exception('MATRIX DATA DOES NOT MATCH DIMENSIONS') # conditional to raise exception
         eq_list = [] # initialize list for storing equalities
@@ -63,20 +149,46 @@ class Matrix:
 
 ###############################################################################
 
-    def transpose(self): # class method for transposing array
+    def transpose(self):
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be used
+            
+        Returns
+        -------
+        t_array : numpy array
+            a transposed numpy matrix array
+        '''
 
         array = np.reshape(np.array(self.data), (self.rows, self.cols)) # reshape array to fit dimensions
         t_array = np.transpose(array) # transpose array
+        
         return t_array # return transposed array
 
 ###############################################################################
 
-    def __mul__(self, other): # class method for two multiplying matracies
+    def __mul__(self, other):
+        '''
+        Parameters
+        ----------
+        self : instance variable
+            allows for instances of the class to be used
+        other : instance variable 
+            allows for instances of an object of the same class to be used 
+            
+        Returns
+        -------
+        mul_array : numpy array
+            product of two numpy matrix arrays
+        '''
 
         if self.rows != other.cols and self.cols != other.rows: raise Exception('MATRIX DATA DOES NOT MATCH DIMENSIONS') # conditional to raise exception
         array = np.reshape(np.array(self.data), (self.rows, self.cols)) # reshape array to fit dimensions
         other_array = np.reshape(np.array(other.data), (other.rows, other.cols)) # reshape other array to fit dimensions
         mul_array = np.matmul(array, other_array) # multiply matrix values
+        
         return mul_array # return product of arrays
 
 ###############################################################################

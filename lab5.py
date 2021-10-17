@@ -120,17 +120,6 @@ def main():
         print(f"All html tags are matched: {bool}") # printing result
 
 ###############################################################################
-'''
-If I were to use a python list implementation instead of the built ArrayStack
-class it would involve appending html tags to two lists, one for the front tags
-and one for the back tags, iterating through the length of the lists, comparing
-the items in the lists, and determining if they are a match. This method would
-be efficient and arrive at the same solution as the ArrayStack implementation,
-but using the stack ADT allows for better visualization of tags being pushed
-onto a stack and popped off one at a time to remove them from the stack.
-Although both implementations work well and are efficient, I would prefer to
-use the built in python list class.
-'''
 ###############################################################################
 
 if __name__ == '__main__':
